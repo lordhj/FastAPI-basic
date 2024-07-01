@@ -1,5 +1,5 @@
 from enum import Enum
-from fastapi import FastAPI, Query, Path
+from fastapi import FastAPI, Query, Path, Body
 from typing import Optional
 from pydantic import BaseModel
 
@@ -94,7 +94,7 @@ async def update_item(
     q: str=None,
     item: Item=None,
     user: User,
-    importance: int
+    importance: int = Body(...)
 ):
     results={"item_id": item_id}
     if q:
